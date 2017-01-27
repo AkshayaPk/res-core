@@ -1,0 +1,5 @@
+language: java
+jdk: oraclejdk8
+services: mysql
+script: mvn clean install sonar:sonar -Dsonar.host.url=https://sonarqube.com -Dsonar.login=82342cb74618508ddc721caa6ae76f900697124f
+
