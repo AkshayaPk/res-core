@@ -13,7 +13,7 @@ public class TestItemPriceDAO {
 
 		final List<ItemPrice> list = itemPriceDAO.list();
 		for (final ItemPrice i : list) {
-			System.out.println(i);
+			
 		}
 
 	}

@@ -12,7 +12,7 @@ public class TestSeatDAO {
 		final SeatDAO seatDAO = new SeatDAO();
 		final List<Seat> list = seatDAO.list();
 		for (final Seat s : list) {
-			System.out.println(s);
+	
 		}
 	}
 

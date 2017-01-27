@@ -26,10 +26,7 @@ public class TestOrderDAO {
 		final Iterator<Order> i = list.iterator();
 		while (i.hasNext()) {
 			final Order order = (Order) i.next();
-			System.out.println(order.getOrderNo());
-			System.out.println(order.getOrderDate());
-			System.out.println(order.getOrderTime());
-			System.out.println(order.getOrderSeatNo().getSeatNo());
+		
 		}
 
 	}

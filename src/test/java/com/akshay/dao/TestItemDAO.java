@@ -34,9 +34,7 @@ public class TestItemDAO {
 		while (ii.hasNext()) {
 			final Item item = (Item) ii.next();
 
-			System.out.println(item.getID());
-			System.out.println(item.getItemName());
-			System.out.println(item.getCategoryCode().getId());
+			
 		}
 
 	}

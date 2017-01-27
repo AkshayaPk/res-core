@@ -10,11 +10,11 @@ import com.akshay.exception.CategoryNotFoundException;
 import com.akshay.model.Category;
 
 public class CategoryValidator {
-
+	private final Logger logger = Logger.getLogger(CategoryValidator.class.getName());
 
 	public void validateSave(Category category)
 	{
-		final Logger logger = Logger.getLogger(CategoryValidator.class.getName());
+		
 		if("".equals(category.getCategoryDescription()))
 		{
 			try {
