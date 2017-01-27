@@ -23,7 +23,7 @@ public class TestOrderDAO {
 		// orderDAO.delete(1);
 		final List<Order> list = orderDAO.list();
 
-		final Iterator i = list.iterator();
+		final Iterator<Order> i = list.iterator();
 		while (i.hasNext()) {
 			final Order order = (Order) i.next();
 			System.out.println(order.getOrderNo());

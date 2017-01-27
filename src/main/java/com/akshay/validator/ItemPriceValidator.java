@@ -15,7 +15,7 @@ public class ItemPriceValidator {
 			try {
 				throw new ItemPriceInvalidUpdateException("Enter a valid price for the item");
 			} catch (ItemPriceInvalidUpdateException e) {
-				// TODO Auto-generated catch block
+				
 				logger.log(Level.SEVERE, "Exceptions Happen",e);
 			}
 		}

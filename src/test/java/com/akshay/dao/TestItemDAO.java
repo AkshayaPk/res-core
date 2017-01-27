@@ -26,7 +26,7 @@ public class TestItemDAO {
 
 		final List<Item> list = itemDAO.list();
 
-		final Iterator ii = list.iterator();
+		final Iterator<Item> ii = list.iterator();
 		/*
 		 * for(Item i:list) { System.out.println(i); }
 		 */

@@ -13,7 +13,7 @@ public class ItemValidator {
 			try {
 				throw new ItemNotFoundException("Item not in list");
 			} catch (ItemNotFoundException e) {
-				// TODO Auto-generated catch block
+				
 				logger.log(Level.SEVERE, "Exceptions Happen",e);
 			}
 

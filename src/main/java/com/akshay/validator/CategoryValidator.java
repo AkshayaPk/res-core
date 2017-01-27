@@ -19,7 +19,7 @@ private static Logger logger = Logger.getLogger(CategoryValidator.class.getName(
 			try {
 				throw new CategoryNotFoundException("This field cannot be null");
 			} catch (CategoryNotFoundException e) {
-				// TODO Auto-generated catch block
+				
 				  logger.log(Level.SEVERE, "Exceptions Happen",e);
 			}
 		}
