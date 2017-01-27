@@ -63,7 +63,12 @@ public class ItemPriceDAO {
 
 		});
 	}
-
+/**
+ * Object to ResultSet
+ * @param rs
+ * @return
+ * @throws SQLException
+ */
 	static ItemPrice convert(final ResultSet rs) throws SQLException {
 		final ItemPrice itemPrice = new ItemPrice();
 		itemPrice.setID(rs.getInt("ID"));
