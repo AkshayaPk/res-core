@@ -23,7 +23,7 @@ public class OrderItemDAO {
 	public void save(final OrderItem orderItem) {
 		final String sql = "insert into order_item_transaction(ID,ORDER_NO,ITEM_ID,ORDER_QTY,ORDER_ITEM_PRICE,PAYMENT_STATUS)"
 				+ "values (?,?,?,?,?,?) ";
-		final Object[] params = { orderItem.getId(), orderItem.getOrderNo().getOrderNo(), orderItem.getItemID().getID(),
+		final Object[] params = { orderItem.getId(), orderItem.getOrderNo().getOrderNo(), orderItem.getItemID().getId(),
 				orderItem.getOrderQty(), orderItem.getOrderItemPrice(), orderItem.getPaymentStatus() };
 		jdbcTemplate.update(sql, params);
 		
@@ -64,7 +64,7 @@ public class OrderItemDAO {
 		final Order order = new Order();
 		order.setOrderNo(rs.getInt("ORDER_NO"));
 		final Item item = new Item();
-		item.setID(rs.getInt("ITEM_ID"));
+		item.setId(rs.getInt("ITEM_ID"));
 		orderItem.setOrderNo(order);
 		orderItem.setItemID(item);
 		orderItem.setOrderQty(rs.getInt("ORDER_QTY"));

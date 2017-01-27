@@ -20,7 +20,7 @@ public class ItemPriceDAO {
 	 */
 	public void save(final ItemPrice itemPrice) {
 		final String sql = "insert into item_price(ID,ITEM_NAME,PRICE) values (?,?,?)";
-		final Object[] params = { itemPrice.getID(), itemPrice.getItemName(), itemPrice.getPrice() };
+		final Object[] params = { itemPrice.getId(), itemPrice.getItemName(), itemPrice.getPrice() };
 		 jdbcTemplate.update(sql, params);
 		
 	}
@@ -32,7 +32,7 @@ public class ItemPriceDAO {
 	 */
 	public void update(final ItemPrice itemPrice) {
 		final String sql = "update item_price set ITEM_NAME=? where ID=? ";
-		final Object[] params = { itemPrice.getItemName(), itemPrice.getID() };
+		final Object[] params = { itemPrice.getItemName(), itemPrice.getId() };
 	 jdbcTemplate.update(sql, params);
 		
 	}
@@ -71,7 +71,7 @@ public class ItemPriceDAO {
  */
 	static ItemPrice convert(final ResultSet rs) throws SQLException {
 		final ItemPrice itemPrice = new ItemPrice();
-		itemPrice.setID(rs.getInt("ID"));
+		itemPrice.setId(rs.getInt("ID"));
 		itemPrice.setItemName(rs.getString("ITEM_NAME"));
 		itemPrice.setPrice(rs.getInt("PRICE"));
 

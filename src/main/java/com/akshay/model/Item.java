@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class Item {
 
-	private int ID;
+	private int Id;
 	private String itemName;
 	private Category categoryCode;
 	private int itemOpeningStock;

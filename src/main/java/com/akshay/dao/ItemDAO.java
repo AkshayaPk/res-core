@@ -22,7 +22,7 @@ public class ItemDAO {
 	public void save(final Item item) {
 		final String sql = "insert into item_master(ID,ITEM_NAME,ITEM_CATEGORY_CODE,ITEM_OPENING_STOCK,ITEM_STOCK_ON_HAND,ITEM_CLOSING_STOCK)"
 				+ "values (?,?,?,?,?,?) ";
-		final Object[] params = { item.getID(), item.getItemName(), item.getCategoryCode().getId(),
+		final Object[] params = { item.getId(), item.getItemName(), item.getCategoryCode().getId(),
 				item.getItemOpeningStock(), item.getItemStockOnHand(), item.getItemClosingStock() };
 		 jdbcTemplate.update(sql, params);
 		
@@ -46,7 +46,7 @@ public class ItemDAO {
 	 */
 	public void update(final Item item) {
 		final String sql = "update item_master set ITEM_NAME=? where ID=?";
-		final Object[] params = { item.getItemName(), item.getID() };
+		final Object[] params = { item.getItemName(), item.getId() };
 		 jdbcTemplate.update(sql, params);
 		
 	}
@@ -67,7 +67,7 @@ public class ItemDAO {
 	public Item convert(final ResultSet rs) throws SQLException {
 		final Item item = new Item();
 
-		item.setID(rs.getInt("ID"));
+		item.setId(rs.getInt("ID"));
 		item.setItemName(rs.getString("ITEM_NAME"));
 		final Category category = new Category();
 		category.setId(rs.getInt("ITEM_CATEGORY_CODE"));
