@@ -61,12 +61,7 @@ public class SeatDAO {
 		});
 
 	}
-	/**
-	  * Converts Object to ResultSet
-	  * @param rs
-	  * @return
-	  * @throws SQLException
-	  */
+	
 	public Seat convert(final ResultSet rs) throws SQLException {
 		final Seat seat = new Seat();
 		seat.setID(rs.getInt("ID"));
