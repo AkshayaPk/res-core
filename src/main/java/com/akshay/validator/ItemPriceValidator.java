@@ -1,10 +1,13 @@
 package com.akshay.validator;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import com.akshay.exception.ItemPriceInvalidUpdateException;
 import com.akshay.model.ItemPrice;
 
 public class ItemPriceValidator {
-    
+	private static Logger logger = Logger.getLogger(ItemPriceValidator.class.getName());
 	public void validateUpdate(ItemPrice itemPrice)
 	{
 		if(itemPrice.getPrice()<0)
@@ -13,7 +16,7 @@ public class ItemPriceValidator {
 				throw new ItemPriceInvalidUpdateException("Enter a valid price for the item");
 			} catch (ItemPriceInvalidUpdateException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				logger.log(Level.SEVERE, "Exceptions Happen",e);
 			}
 		}
 	}
