@@ -7,9 +7,10 @@ import com.akshay.exception.ItemPriceInvalidUpdateException;
 import com.akshay.model.ItemPrice;
 
 public class ItemPriceValidator {
-	private static Logger logger = Logger.getLogger(ItemPriceValidator.class.getName());
+;
 	public void validateUpdate(ItemPrice itemPrice)
 	{
+		 Logger logger = Logger.getLogger(ItemPriceValidator.class.getName());
 		if(itemPrice.getPrice()<0)
 		{
 			try {

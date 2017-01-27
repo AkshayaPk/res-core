@@ -7,8 +7,9 @@ import com.akshay.exception.ItemNotFoundException;
 import com.akshay.model.Item;
 
 public class ItemValidator {
-	private static Logger logger = Logger.getLogger(ItemValidator.class.getName());
+	
 	public void validateSave(Item item) {
+		Logger logger = Logger.getLogger(ItemValidator.class.getName());
 		if ("".equals(item.getItemName())) {
 			try {
 				throw new ItemNotFoundException("Item not in list");
