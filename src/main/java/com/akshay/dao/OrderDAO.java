@@ -23,7 +23,7 @@ public class OrderDAO {
 		final String sql = "insert into order_transaction(ORDER_NO,ORDER_DATE,ORDER_TIME,ORDER_SEAT_NO)" + "values (?,?,?,?)";
 		final Object[] params = { order.getOrderNo(), order.getOrderDate(), order.getOrderTime(),
 				order.getOrderSeatNo().getSeatNo() };
-		final int rows = jdbcTemplate.update(sql, params);
+		 jdbcTemplate.update(sql, params);
 		
 	}
 
@@ -34,7 +34,7 @@ public class OrderDAO {
 	 */
 	public void delete(final int orderNo) {
 		final String sql = "delete from order_transaction where ORDER_NO=?";
-		final int rows = jdbcTemplate.update(sql, orderNo);
+		 jdbcTemplate.update(sql, orderNo);
 		
 	}
 

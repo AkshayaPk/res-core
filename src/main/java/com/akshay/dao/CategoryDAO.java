@@ -21,7 +21,7 @@ public class CategoryDAO {
 		final String sql = "insert into category_master (ID,CATEGORY_DESCRIPTION,START_TIME,END_TIME) values (?,?,?,?) ";
 		final Object[] params = { category.getId(), category.getCategoryDescription(), category.getStartTime(),
 				category.getEndTime() };
-		final int rows = jdbcTemplate.update(sql, params);
+	 jdbcTemplate.update(sql, params);
 	
 	}
 
@@ -33,7 +33,7 @@ public class CategoryDAO {
 	public void delete(final int id) {
 		final String sql = "delete from category_master where ID=?";
 		final Object[] params = { id };
-		final int rows = jdbcTemplate.update(sql, params);
+ jdbcTemplate.update(sql, params);
 	
 	}
 
@@ -45,7 +45,7 @@ public class CategoryDAO {
 	public void update(final Category category) {
 		final String sql = "update category_master set category_description=? where ID=?";
 		final Object[] params = { category.getCategoryDescription(), category.getId() };
-		final int rows = jdbcTemplate.update(sql, params);
+		 jdbcTemplate.update(sql, params);
 	
 	}
 
