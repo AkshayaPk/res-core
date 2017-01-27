@@ -20,7 +20,7 @@ public class SeatDAO {
 	 */
 	public void save(final Seat seat) {
 		final String sql = "insert into seat_master(ID,SEAT_NO,SEAT_STATUS) values (?,?,?)";
-		final Object[] params = { seat.getID(), seat.getSeatNo(), seat.getSeatStatus() };
+		final Object[] params = { seat.getId(), seat.getSeatNo(), seat.getSeatStatus() };
 		 jdbcTemplate.update(sql, params);
 		
 	}
@@ -64,7 +64,7 @@ public class SeatDAO {
 	
 	public Seat convert(final ResultSet rs) throws SQLException {
 		final Seat seat = new Seat();
-		seat.setID(rs.getInt("ID"));
+		seat.setId(rs.getInt("ID"));
 		seat.setSeatNo(rs.getInt("SEAT_NO"));
 		seat.setSeatStatus(rs.getString("SEAT_STATUS"));
 		return seat;
