@@ -25,7 +25,7 @@ public class ItemDAO {
 		final Object[] params = { item.getID(), item.getItemName(), item.getCategoryCode().getId(),
 				item.getItemOpeningStock(), item.getItemStockOnHand(), item.getItemClosingStock() };
 		final int rows = jdbcTemplate.update(sql, params);
-		System.out.println(rows);
+		
 	}
 
 	/**
@@ -36,7 +36,7 @@ public class ItemDAO {
 	public void delete(final int id) {
 		final String sql = "delete from item_master where id=?";
 		final int rows = jdbcTemplate.update(sql, id);
-		System.out.println(rows);
+		
 	}
 
 	/**
@@ -48,7 +48,7 @@ public class ItemDAO {
 		final String sql = "update item_master set ITEM_NAME=? where ID=?";
 		final Object[] params = { item.getItemName(), item.getID() };
 		final int rows = jdbcTemplate.update(sql, params);
-		System.out.println(rows);
+		
 	}
 
 	/**

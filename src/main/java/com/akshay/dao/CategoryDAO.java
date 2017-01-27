@@ -22,7 +22,7 @@ public class CategoryDAO {
 		final Object[] params = { category.getId(), category.getCategoryDescription(), category.getStartTime(),
 				category.getEndTime() };
 		final int rows = jdbcTemplate.update(sql, params);
-		System.out.println(rows);
+	
 	}
 
 	/**
@@ -34,7 +34,7 @@ public class CategoryDAO {
 		final String sql = "delete from category_master where ID=?";
 		final Object[] params = { id };
 		final int rows = jdbcTemplate.update(sql, params);
-		System.out.println(rows);
+	
 	}
 
 	/**
@@ -46,7 +46,7 @@ public class CategoryDAO {
 		final String sql = "update category_master set category_description=? where ID=?";
 		final Object[] params = { category.getCategoryDescription(), category.getId() };
 		final int rows = jdbcTemplate.update(sql, params);
-		System.out.println(rows);
+	
 	}
 
 	/**

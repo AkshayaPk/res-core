@@ -22,7 +22,7 @@ public class SeatDAO {
 		final String sql = "insert into seat_master(ID,SEAT_NO,SEAT_STATUS) values (?,?,?)";
 		final Object[] params = { seat.getID(), seat.getSeatNo(), seat.getSeatStatus() };
 		final int rows = jdbcTemplate.update(sql, params);
-		System.out.println(rows);
+		
 	}
 
 	/**
@@ -34,7 +34,7 @@ public class SeatDAO {
 		final String sql = "update seat_master set SEAT_STATUS=? where SEAT_NO= ?";
 		final Object[] params = { seat.getSeatStatus(), seat.getSeatNo() };
 		final int rows = jdbcTemplate.update(sql, params);
-		System.out.println(rows);
+		
 	}
 
 	/**
@@ -45,7 +45,7 @@ public class SeatDAO {
 	public void delete(final int id) {
 		final String sql = "delete from seat_master where id=?";
 		final int rows = jdbcTemplate.update(sql, id);
-		System.out.println(rows);
+	
 	}
 
 	/**

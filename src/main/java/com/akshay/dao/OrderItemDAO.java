@@ -26,7 +26,7 @@ public class OrderItemDAO {
 		final Object[] params = { orderItem.getId(), orderItem.getOrderNo().getOrderNo(), orderItem.getItemID().getID(),
 				orderItem.getOrderQty(), orderItem.getOrderItemPrice(), orderItem.getPaymentStatus() };
 		final int rows = jdbcTemplate.update(sql, params);
-		System.out.println(rows);
+		
 	}
 
 	/**
@@ -37,7 +37,7 @@ public class OrderItemDAO {
 	public void delete(final int id) {
 		final String sql = "delete from order_item_transaction where id=?";
 		final int rows = jdbcTemplate.update(sql, id);
-		System.out.println(rows);
+		
 	}
 
 	/**

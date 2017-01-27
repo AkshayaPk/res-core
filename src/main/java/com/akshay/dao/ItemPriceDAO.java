@@ -22,7 +22,7 @@ public class ItemPriceDAO {
 		final String sql = "insert into item_price(ID,ITEM_NAME,PRICE) values (?,?,?)";
 		final Object[] params = { itemPrice.getID(), itemPrice.getItemName(), itemPrice.getPrice() };
 		final int rows = jdbcTemplate.update(sql, params);
-		System.out.println(rows);
+		
 	}
 
 	/**
@@ -34,7 +34,7 @@ public class ItemPriceDAO {
 		final String sql = "update item_price set ITEM_NAME=? where ID=? ";
 		final Object[] params = { itemPrice.getItemName(), itemPrice.getID() };
 		final int rows = jdbcTemplate.update(sql, params);
-		System.out.println(rows);
+		
 	}
 
 	/**
@@ -46,7 +46,7 @@ public class ItemPriceDAO {
 		final String sql = "delete from item_price where ID=?";
 
 		final int rows = jdbcTemplate.update(sql, id);
-		System.out.println(rows);
+		
 
 	}
 

@@ -24,7 +24,7 @@ public class OrderDAO {
 		final Object[] params = { order.getOrderNo(), order.getOrderDate(), order.getOrderTime(),
 				order.getOrderSeatNo().getSeatNo() };
 		final int rows = jdbcTemplate.update(sql, params);
-		System.out.println(rows);
+		
 	}
 
 	/**
@@ -35,7 +35,7 @@ public class OrderDAO {
 	public void delete(final int orderNo) {
 		final String sql = "delete from order_transaction where ORDER_NO=?";
 		final int rows = jdbcTemplate.update(sql, orderNo);
-		System.out.println(rows);
+		
 	}
 
 	/**
