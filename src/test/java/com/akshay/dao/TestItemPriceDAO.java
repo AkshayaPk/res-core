@@ -10,12 +10,13 @@ public class TestItemPriceDAO {
 	public static void main(final String[] args) {
 
 		final ItemPriceDAO itemPriceDAO = new ItemPriceDAO();
+//
+//		final List<ItemPrice> list = itemPriceDAO.list();
+//		for (final ItemPrice i : list) {
+//			
+//		}
 
-		final List<ItemPrice> list = itemPriceDAO.list();
-		for (final ItemPrice i : list) {
-			
-		}
-
+        
 	}
 
 }

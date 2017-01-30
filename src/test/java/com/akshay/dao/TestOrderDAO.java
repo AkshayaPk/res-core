@@ -28,9 +28,11 @@ public class TestOrderDAO {
 //			final Order order = (Order) i.next();
 //		
 //		}
-          String status=orderDAO.PlaceOrder("Coffee", "2", 9, 7, "errmsg");
-          System.out.println(status);
+//          String status=orderDAO.PlaceOrder("Coffee", "2", 9, 7, "errmsg");
+//          System.out.println(status);
 //          String cancelStatus=orderDAO.CancelOrder(6, "Coffee", "errmsg");
 //          System.out.println(cancelStatus);
+		 Boolean isPresent=orderDAO.validateOrderNo(10);
+		 System.out.println(isPresent);
 	}
 }

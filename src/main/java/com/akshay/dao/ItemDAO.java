@@ -77,5 +77,12 @@ public class ItemDAO {
 		item.setItemClosingStock(rs.getInt("ITEM_CLOSING_STOCK"));
 		return item;
 	}
+	
+	public Boolean validateItem(String name) {
+		String sql = "select FN_CHECK_ITEM_IN_LIST(?)";
+		Boolean isAvailable= jdbcTemplate.queryForObject(sql, new Object[] { name },    Boolean.class);
+		return isAvailable;
+		}
+
 
 }

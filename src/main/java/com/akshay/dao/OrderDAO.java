@@ -94,4 +94,9 @@ public class OrderDAO {
         return status;
 
 }
+	public Boolean validateOrderNo(int orderNo) {
+		String sql = "select FN_CHECK_ORDERNO(?)";
+		Boolean isAvailable= jdbcTemplate.queryForObject(sql, new Object[] { orderNo },    Boolean.class);
+		return isAvailable;
+		}
 }
