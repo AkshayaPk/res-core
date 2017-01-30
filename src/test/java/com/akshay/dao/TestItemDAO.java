@@ -24,20 +24,20 @@ public class TestItemDAO {
 
 		// itemDAO.delete(17);
 
-//		final List<Item> list = itemDAO.list();
-//
-//		final Iterator<Item> ii = list.iterator();
-//		/*
-//		 * for(Item i:list) { System.out.println(i); }
-//		 */
-//
-//		while (ii.hasNext()) {
-//			final Item item = (Item) ii.next();
-//
-//			
-//		}
-		Boolean isValid = itemDAO.validateItem("ID");
-		System.out.println(isValid);
+		final List<Item> list = itemDAO.listItems();
+
+		final Iterator<Item> ii = list.iterator();
+		/*
+		 * for(Item i:list) { System.out.println(i); }
+		 */
+
+		while (ii.hasNext()) {
+			final Item item = (Item) ii.next();
+            System.out.println(item.getItemName());
+			
+		}
+//		Boolean isValid = itemDAO.validateItem("ID");
+//		System.out.println(isValid);
 
 	}
 

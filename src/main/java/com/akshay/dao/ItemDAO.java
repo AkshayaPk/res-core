@@ -24,8 +24,8 @@ public class ItemDAO {
 				+ "values (?,?,?,?,?,?) ";
 		final Object[] params = { item.getId(), item.getItemName(), item.getCategoryCode().getId(),
 				item.getItemOpeningStock(), item.getItemStockOnHand(), item.getItemClosingStock() };
-		 jdbcTemplate.update(sql, params);
-		
+		jdbcTemplate.update(sql, params);
+
 	}
 
 	/**
@@ -35,8 +35,8 @@ public class ItemDAO {
 	 */
 	public void delete(final int id) {
 		final String sql = "delete from item_master where id=?";
-		 jdbcTemplate.update(sql, id);
-		
+		jdbcTemplate.update(sql, id);
+
 	}
 
 	/**
@@ -47,8 +47,8 @@ public class ItemDAO {
 	public void update(final Item item) {
 		final String sql = "update item_master set ITEM_NAME=? where ID=?";
 		final Object[] params = { item.getItemName(), item.getId() };
-		 jdbcTemplate.update(sql, params);
-		
+		jdbcTemplate.update(sql, params);
+
 	}
 
 	/**
@@ -77,12 +77,25 @@ public class ItemDAO {
 		item.setItemClosingStock(rs.getInt("ITEM_CLOSING_STOCK"));
 		return item;
 	}
-	
+
 	public Boolean validateItem(String name) {
 		String sql = "select FN_CHECK_ITEM_IN_LIST(?)";
-		Boolean isAvailable= jdbcTemplate.queryForObject(sql, new Object[] { name },    Boolean.class);
+		Boolean isAvailable = jdbcTemplate.queryForObject(sql, new Object[] { name }, Boolean.class);
 		return isAvailable;
-		}
+	}
 
+	public List<Item> listItems() {
+		String sql = "select distinct ITEM_NAME from ITEM_MASTER";
+		return jdbcTemplate.query(sql, (rs, rowNum) -> {
+			final Item item = convertForMenu(rs);
+			return item;
+		});
+	}
+
+	public Item convertForMenu(final ResultSet rs) throws SQLException {
+		final Item item = new Item();
+		item.setItemName(rs.getString("ITEM_NAME"));
+		return item;
+	}
 
 }
