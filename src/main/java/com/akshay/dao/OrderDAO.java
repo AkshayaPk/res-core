@@ -83,4 +83,15 @@ public class OrderDAO {
         return status;
 
 }
+	public String CancelOrder(int orderid,String foodname,String errmsg) {
+        SimpleJdbcCall call = new SimpleJdbcCall(jdbcTemplate).withProcedureName("PR_CANCEL_ORDER")
+                .declareParameters(new SqlParameter("i_orderid", Types.INTEGER),new SqlParameter("i_foodname", Types.VARCHAR),
+                	new SqlOutParameter("errmsg", Types.VARCHAR));
+        call.setAccessCallParameterMetaData(false);
+        SqlParameterSource in = new MapSqlParameterSource().addValue("i_orderid", orderid).addValue("i_foodname", foodname).addValue("errmsg", errmsg);
+        Map<String, Object> execute = call.execute(in);
+        String status = (String) execute.get("errmsg");
+        return status;
+
+}
 }

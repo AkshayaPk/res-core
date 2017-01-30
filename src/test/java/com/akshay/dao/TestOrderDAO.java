@@ -28,7 +28,9 @@ public class TestOrderDAO {
 //			final Order order = (Order) i.next();
 //		
 //		}
-          String status=orderDAO.PlaceOrder("Coffee", "2", 7, 7, "errmsg");
+          String status=orderDAO.PlaceOrder("Coffee", "2", 9, 7, "errmsg");
           System.out.println(status);
+//          String cancelStatus=orderDAO.CancelOrder(6, "Coffee", "errmsg");
+//          System.out.println(cancelStatus);
 	}
 }
