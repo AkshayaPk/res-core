@@ -3,6 +3,7 @@ package com.akshay.validator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import com.akshay.exception.CategoryNotFoundException;
 import com.akshay.exception.ItemPriceInvalidUpdateException;
 import com.akshay.model.ItemPrice;
 
@@ -20,5 +21,18 @@ public class ItemPriceValidator {
 				logger.log(Level.SEVERE, "Exceptions Happen",e);
 			}
 		}
+		
+	}
+	public boolean validateSave(ItemPrice itemPrice) {
+		if("".equals(itemPrice.getId())||"".equals(itemPrice.getItemName())||"".equals(itemPrice.getPrice()))
+		{
+			try {
+				throw new CategoryNotFoundException("This field cannot be null");
+			} catch (CategoryNotFoundException e) {
+				
+				  logger.log(Level.SEVERE, "Exceptions Happen",e);
+			}
+		}
+		return false;
 	}
 }

@@ -12,10 +12,10 @@ import com.akshay.model.Category;
 public class CategoryValidator {
 	private final Logger logger = Logger.getLogger(CategoryValidator.class.getName());
 
-	public void validateSave(Category category)
+	public boolean validateSave(Category category)
 	{
 		
-		if("".equals(category.getCategoryDescription()))
+		if("".equals(category.getCategoryDescription())||"".equals(category.getId())||"".equals(category.getStartTime())||"".equals(category.getEndTime()))
 		{
 			try {
 				throw new CategoryNotFoundException("This field cannot be null");
@@ -24,5 +24,6 @@ public class CategoryValidator {
 				  logger.log(Level.SEVERE, "Exceptions Happen",e);
 			}
 		}
+		return true;
 	}
 }
