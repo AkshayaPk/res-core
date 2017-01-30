@@ -25,8 +25,8 @@ public class ItemPriceDAO {
 	public void save(final ItemPrice itemPrice) {
 		final String sql = "insert into item_price(ID,ITEM_NAME,PRICE) values (?,?,?)";
 		final Object[] params = { itemPrice.getId(), itemPrice.getItemName(), itemPrice.getPrice() };
-		 jdbcTemplate.update(sql, params);
-		
+		jdbcTemplate.update(sql, params);
+
 	}
 
 	/**
@@ -37,8 +37,8 @@ public class ItemPriceDAO {
 	public void update(final ItemPrice itemPrice) {
 		final String sql = "update item_price set ITEM_NAME=? where ID=? ";
 		final Object[] params = { itemPrice.getItemName(), itemPrice.getId() };
-	 jdbcTemplate.update(sql, params);
-		
+		jdbcTemplate.update(sql, params);
+
 	}
 
 	/**
@@ -49,8 +49,7 @@ public class ItemPriceDAO {
 	public void delete(final int id) {
 		final String sql = "delete from item_price where ID=?";
 
-	 jdbcTemplate.update(sql, id);
-		
+		jdbcTemplate.update(sql, id);
 
 	}
 
@@ -67,12 +66,14 @@ public class ItemPriceDAO {
 
 		});
 	}
-/**
- * Object to ResultSet
- * @param rs
- * @return
- * @throws SQLException
- */
+
+	/**
+	 * Object to ResultSet
+	 * 
+	 * @param rs
+	 * @return
+	 * @throws SQLException
+	 */
 	static ItemPrice convert(final ResultSet rs) throws SQLException {
 		final ItemPrice itemPrice = new ItemPrice();
 		itemPrice.setId(rs.getInt("ID"));
@@ -82,5 +83,10 @@ public class ItemPriceDAO {
 		return itemPrice;
 	}
 
+	public Integer getPriceOfItem(String foodname) {
+		String sql = "select FN_GET_PRICE_OF_FOOD(?)";
+		Integer itemPrice = jdbcTemplate.queryForObject(sql, new Object[] { foodname }, Integer.class);
+		return itemPrice;
+	}
 
 }
