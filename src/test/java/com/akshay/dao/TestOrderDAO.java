@@ -21,13 +21,14 @@ public class TestOrderDAO {
 		//
 		// orderDAO.save(order);
 		// orderDAO.delete(1);
-		final List<Order> list = orderDAO.list();
-
-		final Iterator<Order> i = list.iterator();
-		while (i.hasNext()) {
-			final Order order = (Order) i.next();
-		
-		}
-
+//		final List<Order> list = orderDAO.list();
+//
+//		final Iterator<Order> i = list.iterator();
+//		while (i.hasNext()) {
+//			final Order order = (Order) i.next();
+//		
+//		}
+          String status=orderDAO.PlaceOrder("Coffee", "2", 7, 7, "errmsg");
+          System.out.println(status);
 	}
 }

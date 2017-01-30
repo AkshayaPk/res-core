@@ -2,9 +2,16 @@ package com.akshay.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.SqlOutParameter;
+import org.springframework.jdbc.core.SqlParameter;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
+import org.springframework.jdbc.core.simple.SimpleJdbcCall;
 
 import com.akshay.model.Order;
 import com.akshay.model.Seat;
@@ -64,5 +71,16 @@ public class OrderDAO {
 
 		return order;
 	}
+	
+	public String PlaceOrder(String foodname,String quantity,int orderid,int seatno,String errmsg) {
+        SimpleJdbcCall call = new SimpleJdbcCall(jdbcTemplate).withProcedureName("PR_ORDERFOOD")
+                .declareParameters(new SqlParameter("_food", Types.VARCHAR),new SqlParameter("_quan", Types.VARCHAR),
+                		new SqlParameter("i_orderid", Types.INTEGER),new SqlParameter("i_seatno", Types.INTEGER),new SqlOutParameter("errmsg", Types.VARCHAR));
+        call.setAccessCallParameterMetaData(false);
+        SqlParameterSource in = new MapSqlParameterSource().addValue("_food", foodname).addValue("_quan", quantity).addValue("i_orderid", orderid).addValue("i_seatno",seatno).addValue("errmsg", errmsg);
+        Map<String, Object> execute = call.execute(in);
+        String status = (String) execute.get("errmsg");
+        return status;
 
+}
 }
