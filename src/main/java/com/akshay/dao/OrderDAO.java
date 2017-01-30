@@ -99,4 +99,9 @@ public class OrderDAO {
 		Boolean isAvailable= jdbcTemplate.queryForObject(sql, new Object[] { orderNo },    Boolean.class);
 		return isAvailable;
 		}
+	public Boolean CheckItemCategoryServed(String foodname) {
+		String sql = "select FN_IS_ITEM_CATEGORY_SERVED(?)";
+		Boolean isAvailable= jdbcTemplate.queryForObject(sql, new Object[] { foodname },    Boolean.class);
+		return isAvailable;
+		}
 }

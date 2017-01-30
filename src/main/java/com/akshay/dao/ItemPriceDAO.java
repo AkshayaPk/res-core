@@ -5,9 +5,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
-import org.springframework.jdbc.core.namedparam.SqlParameterSource;
-import org.springframework.jdbc.core.simple.SimpleJdbcCall;
+
 
 import com.akshay.model.ItemPrice;
 import com.akshay.util.ConnectionUtil;
@@ -15,7 +13,7 @@ import com.akshay.util.ConnectionUtil;
 public class ItemPriceDAO {
 
 	private final JdbcTemplate jdbcTemplate = ConnectionUtil.getJdbcTemplate();
-	private SimpleJdbcCall simpleJdbcCall;
+	
 
 	/**
 	 * TO INSERT A RECORD INTO THE ITEM_PRICE RELATION.
