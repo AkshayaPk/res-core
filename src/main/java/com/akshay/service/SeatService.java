@@ -38,4 +38,17 @@ public class SeatService {
 		}
 		
 	}
+	public void deleteService(Seat seat) throws SeatServiceException
+	{
+		SeatValidator seatValidator=new SeatValidator();
+		SeatDAO seatDAO=new SeatDAO();
+		
+		try {
+			seatValidator.validateSave(seat);
+			seatDAO.delete(seat);
+		} catch (SeatInvalidEntriesException e) {
+			 throw new SeatServiceException("Seat update exception");
+		}
+		
+	}
 }

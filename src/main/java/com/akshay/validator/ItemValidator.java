@@ -16,6 +16,16 @@ public class ItemValidator {
 		}
 	
 	}
+public void validateUpdate(Item item) throws ItemNotFoundException {
+		
+		if (item.getItemOpeningStock()<0 || item.getItemStockOnHand()<0 || item.getItemClosingStock() < 0 || item.getId() < 0) {
+		
+				throw new ItemNotFoundException("Please dont fill negative values");
+			
+
+		}
+	
+	}
 	
 
 }

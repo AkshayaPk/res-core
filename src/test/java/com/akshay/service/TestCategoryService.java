@@ -13,7 +13,7 @@ public class TestCategoryService {
 		CategoryService categoryService=new CategoryService();
 		Category category = new Category();
 		category.setId(6);
-		category.setCategoryDescription("");
+		category.setCategoryDescription(null);
 		category.setStartTime(LocalTime.parse("09:00:00"));
 		category.setEndTime(LocalTime.parse("12:00:00"));
 		

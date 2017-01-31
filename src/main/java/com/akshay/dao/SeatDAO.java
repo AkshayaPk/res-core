@@ -21,8 +21,8 @@ public class SeatDAO {
 	public void save(final Seat seat) {
 		final String sql = "insert into seat_master(ID,SEAT_NO,SEAT_STATUS) values (?,?,?)";
 		final Object[] params = { seat.getId(), seat.getSeatNo(), seat.getSeatStatus() };
-		 jdbcTemplate.update(sql, params);
-		
+		jdbcTemplate.update(sql, params);
+
 	}
 
 	/**
@@ -34,7 +34,7 @@ public class SeatDAO {
 		final String sql = "update seat_master set SEAT_STATUS=? where SEAT_NO= ?";
 		final Object[] params = { seat.getSeatStatus(), seat.getSeatNo() };
 		jdbcTemplate.update(sql, params);
-		
+
 	}
 
 	/**
@@ -42,10 +42,11 @@ public class SeatDAO {
 	 * 
 	 * @param seat
 	 */
-	public void delete(final int id) {
+	public void delete(final Seat seat) {
 		final String sql = "delete from seat_master where id=?";
-		 jdbcTemplate.update(sql, id);
-	
+		Object[] params = { seat.getId() };
+		jdbcTemplate.update(sql, params);
+
 	}
 
 	/**
@@ -61,7 +62,7 @@ public class SeatDAO {
 		});
 
 	}
-	
+
 	public Seat convert(final ResultSet rs) throws SQLException {
 		final Seat seat = new Seat();
 		seat.setId(rs.getInt("ID"));

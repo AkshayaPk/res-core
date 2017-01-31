@@ -35,4 +35,16 @@ public class ItemPriceService {
             throw new ItemPriceServiceException("Update price without negative values");			
 		}
 	}
+	public void deleteService(ItemPrice itemPrice) throws ItemPriceServiceException
+	{
+		 ItemPriceValidator itemPriceValidator = new ItemPriceValidator();
+		 ItemPriceDAO itemPriceDAO=new ItemPriceDAO();
+		 
+		 try {
+			itemPriceValidator.validateUpdate(itemPrice);
+			itemPriceDAO.delete(itemPrice);
+		} catch (ItemPriceInvalidUpdateException e) {
+            throw new ItemPriceServiceException("Update price without negative values");			
+		}
+	}
 }

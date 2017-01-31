@@ -1,6 +1,7 @@
 package com.akshay.validator;
 
 
+import com.akshay.exception.ItemPriceInvalidUpdateException;
 import com.akshay.model.ItemPrice;
 
 public class TestItemPriceValidator {
@@ -10,7 +11,12 @@ public class TestItemPriceValidator {
 		ItemPrice itemPrice = new ItemPrice();
 		itemPrice.setPrice(-1);
 		ItemPriceValidator itemPriceValidator=new ItemPriceValidator();
-		itemPriceValidator.validateUpdate(itemPrice);
+		try {
+			itemPriceValidator.validateUpdate(itemPrice);
+		} catch (ItemPriceInvalidUpdateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

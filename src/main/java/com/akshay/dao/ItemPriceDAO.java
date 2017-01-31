@@ -44,10 +44,10 @@ public class ItemPriceDAO {
 	 * 
 	 * @param itemPrice
 	 */
-	public void delete(final int id) {
+	public void delete(final ItemPrice itemPrice) {
 		final String sql = "delete from item_price where ID=?";
-
-		jdbcTemplate.update(sql, id);
+        Object[] params = {itemPrice.getId()};
+		jdbcTemplate.update(sql, params);
 
 	}
 

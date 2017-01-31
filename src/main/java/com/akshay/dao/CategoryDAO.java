@@ -21,8 +21,8 @@ public class CategoryDAO {
 		final String sql = "insert into category_master (ID,CATEGORY_DESCRIPTION,START_TIME,END_TIME) values (?,?,?,?) ";
 		final Object[] params = { category.getId(), category.getCategoryDescription(), category.getStartTime(),
 				category.getEndTime() };
-	 jdbcTemplate.update(sql, params);
-	
+		jdbcTemplate.update(sql, params);
+
 	}
 
 	/**
@@ -30,11 +30,11 @@ public class CategoryDAO {
 	 * 
 	 * @param category
 	 */
-	public void delete(final int id) {
+	public void delete(final Category category) {
 		final String sql = "delete from category_master where ID=?";
-		final Object[] params = { id };
- jdbcTemplate.update(sql, params);
-	
+		final Object[] params = { category.getId() };
+		jdbcTemplate.update(sql, params);
+
 	}
 
 	/**
@@ -45,8 +45,8 @@ public class CategoryDAO {
 	public void update(final Category category) {
 		final String sql = "update category_master set category_description=? where ID=?";
 		final Object[] params = { category.getCategoryDescription(), category.getId() };
-		 jdbcTemplate.update(sql, params);
-	
+		jdbcTemplate.update(sql, params);
+
 	}
 
 	/**
@@ -62,12 +62,14 @@ public class CategoryDAO {
 		});
 
 	}
- /**
-  * Converts Object to ResultSet
-  * @param rs
-  * @return
-  * @throws SQLException
-  */
+
+	/**
+	 * Converts Object to ResultSet
+	 * 
+	 * @param rs
+	 * @return
+	 * @throws SQLException
+	 */
 	static Category convert(final ResultSet rs) throws SQLException {
 		final Category category = new Category();
 		category.setId(rs.getInt("ID"));

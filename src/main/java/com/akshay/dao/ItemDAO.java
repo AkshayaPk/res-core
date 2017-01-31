@@ -33,9 +33,10 @@ public class ItemDAO {
 	 * 
 	 * @param item
 	 */
-	public void delete(final int id) {
+	public void delete(final Item item) {
 		final String sql = "delete from item_master where id=?";
-		jdbcTemplate.update(sql, id);
+		Object[] params={item.getId()};
+		jdbcTemplate.update(sql, params);
 
 	}
 
