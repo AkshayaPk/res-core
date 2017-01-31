@@ -1,5 +1,6 @@
 package com.akshay.controller;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,6 +18,7 @@ public class ItemController {
 			@RequestParam("categoryCode") Integer categoryCode, @RequestParam("itemOpeningStock") Integer itemOpenStock,
 			@RequestParam("itemStockOnHand") Integer itemStockOnHand,
 			@RequestParam("itemClosingStock") Integer itemClosingStock) {
+		Logger log = Logger.getLogger(CategoryController.class.getName());
 		Item item = new Item();
 		item.setId(id);
 		item.setItemName(itemName);
@@ -32,11 +34,12 @@ public class ItemController {
 			itemService.provideService(item);
 		} catch (ItemServiceException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			log.debug("ItemController save exception",e);
 		}
 	}
 
 	public void update(@RequestParam("id") Integer id, @RequestParam("itemName") String itemName) {
+		Logger log = Logger.getLogger(CategoryController.class.getName());
 		Item item = new Item();
 		item.setId(id);
 		item.setItemName(itemName);
@@ -46,7 +49,7 @@ public class ItemController {
 			itemService.updateService(item);
 		} catch (ItemServiceException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			log.debug("ItemController update exception",e);
 		}
 	}
 }

@@ -33,7 +33,7 @@ public class CategoryController {
 			categoryService.saveService(category);
 		} catch (CategoryServiceException e) {
 			// TODO Auto-generated catch block
-	       log.debug("Service Exception");
+	       log.debug("Service Exception",e);
 
 		}
 	    
@@ -54,7 +54,7 @@ public void update(@RequestParam("id") Integer id,@RequestParam("catdesc") Strin
 		categoryService.updateService(category);
 	} catch (CategoryServiceException e) {
 		
-		log.debug("Update Controller method exception");
+		log.debug("Update Controller method exception",e);
 	}
     
 }

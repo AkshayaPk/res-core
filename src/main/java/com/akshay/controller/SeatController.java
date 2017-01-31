@@ -1,5 +1,6 @@
 package com.akshay.controller;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,6 +15,7 @@ public class SeatController {
 	@RequestMapping("save")
 	public void save(@RequestParam("id") Integer id, @RequestParam("seatNo") Integer seatNo,
 			@RequestParam("seatStatus") String seatStatus) {
+		Logger log = Logger.getLogger(CategoryController.class.getName());
 		System.out.println("Seat Controller Called");
 		Seat seat = new Seat();
 		seat.setId(id);
@@ -24,12 +26,13 @@ public class SeatController {
 		try {
 			seatService.provideService(seat);
 		} catch (SeatServiceException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			
+			log.debug("SeatService Exception", e);
 		}
 	}
 
 	public void update(@RequestParam("seatNo") Integer seatNo, @RequestParam("seatStatus") String seatStatus) {
+		Logger log = Logger.getLogger(CategoryController.class.getName());
 		System.out.println("Seat Controller Called");
 		Seat seat = new Seat();
 
@@ -40,8 +43,8 @@ public class SeatController {
 		try {
 			seatService.updateService(seat);
 		} catch (SeatServiceException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		
+			log.debug("SeatService Exception", e);
 		}
 	}
 }
