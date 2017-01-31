@@ -23,16 +23,13 @@ public class ItemPriceValidator {
 		}
 		
 	}
-	public boolean validateSave(ItemPrice itemPrice) {
+	public void validateSave(ItemPrice itemPrice) throws ItemPriceInvalidUpdateException  {
 		if("".equals(itemPrice.getId())||"".equals(itemPrice.getItemName())||"".equals(itemPrice.getPrice()))
 		{
-			try {
-				throw new CategoryNotFoundException("This field cannot be null");
-			} catch (CategoryNotFoundException e) {
-				
-				  logger.log(Level.SEVERE, "Exceptions Happen",e);
-			}
+			
+				throw new ItemPriceInvalidUpdateException("This field cannot be null");
+			
 		}
-		return false;
+		
 	}
 }
