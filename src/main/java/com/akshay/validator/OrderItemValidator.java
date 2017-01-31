@@ -7,9 +7,9 @@ public class OrderItemValidator {
 
 	public void validateSave(OrderItem orderItem) throws OrderItemInvalidEntriesException {
 
-		if ("".equals(orderItem.getId()) || "".equals(orderItem.getItemID()) || "".equals(orderItem.getOrderItemPrice())
+		if (("".equals(orderItem.getId()) || "".equals(orderItem.getItemID()) || "".equals(orderItem.getOrderItemPrice())
 				|| "".equals(orderItem.getOrderNo()) || "".equals(orderItem.getOrderQty())
-				|| "".equals(orderItem.getPaymentStatus())) {
+				|| "".equals(orderItem.getPaymentStatus()))) {
 
 			throw new OrderItemInvalidEntriesException("Please fill all fields.");
 

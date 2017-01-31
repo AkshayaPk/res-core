@@ -16,7 +16,7 @@ public class ItemPriceValidator {
 	}
 
 	public void validateSave(ItemPrice itemPrice) throws ItemPriceInvalidUpdateException {
-		if ("".equals(itemPrice.getId()) || "".equals(itemPrice.getItemName()) || "".equals(itemPrice.getPrice())) {
+		if (("".equals(itemPrice.getId()) || "".equals(itemPrice.getItemName()) || "".equals(itemPrice.getPrice()))) {
 
 			throw new ItemPriceInvalidUpdateException("This field cannot be null");
 
