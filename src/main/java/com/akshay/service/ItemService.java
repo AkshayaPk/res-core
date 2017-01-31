@@ -22,4 +22,17 @@ public class ItemService {
 			throw new ItemServiceException("All fields must be entered");
 		}
 	}
+	public void updateService(Item item) throws ItemServiceException
+	{
+		ItemValidator itemValidator = new ItemValidator();
+		ItemDAO itemDAO = new ItemDAO();
+		
+		try {
+			itemValidator.validateSave(item);
+			itemDAO.update(item);
+		} catch (ItemNotFoundException e) {
+			// TODO Auto-generated catch block
+			throw new ItemServiceException("All fields must be entered");
+		}
+	}
 }

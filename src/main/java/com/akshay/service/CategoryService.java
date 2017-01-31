@@ -21,5 +21,19 @@ public class CategoryService {
 		}
 
 	}
+	public void updateService(Category category) throws CategoryServiceException
+	{
+		CategoryValidator categoryValidator = new CategoryValidator();
+		CategoryDAO categoryDAO = new CategoryDAO();
+		
+		try {
+			categoryValidator.validateSave(category);
+			categoryDAO.update(category);
+		} catch (CategoryNotFoundException e) {
+			throw new CategoryServiceException("All fields must be entered");
+			
+		}
+		
+	}
 
 }

@@ -23,4 +23,16 @@ public class ItemPriceService {
 			throw new ItemPriceServiceException("All fields must be entered");
 		}
 	}
+	public void updateService(ItemPrice itemPrice) throws ItemPriceServiceException
+	{
+		 ItemPriceValidator itemPriceValidator = new ItemPriceValidator();
+		 ItemPriceDAO itemPriceDAO=new ItemPriceDAO();
+		 
+		 try {
+			itemPriceValidator.validateUpdate(itemPrice);
+			itemPriceDAO.update(itemPrice);
+		} catch (ItemPriceInvalidUpdateException e) {
+            throw new ItemPriceServiceException("Update price without negative values");			
+		}
+	}
 }

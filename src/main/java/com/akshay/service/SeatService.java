@@ -25,4 +25,17 @@ public class SeatService {
 			throw new SeatServiceException("SeatService exception caught");
 		}
 	}
+	public void updateService(Seat seat) throws SeatServiceException
+	{
+		SeatValidator seatValidator=new SeatValidator();
+		SeatDAO seatDAO=new SeatDAO();
+		
+		try {
+			seatValidator.validateSave(seat);
+			seatDAO.update(seat);
+		} catch (SeatInvalidEntriesException e) {
+			 throw new SeatServiceException("Seat update exception");
+		}
+		
+	}
 }

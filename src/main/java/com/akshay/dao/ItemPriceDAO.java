@@ -33,8 +33,8 @@ public class ItemPriceDAO {
 	 * @param itemPrice
 	 */
 	public void update(final ItemPrice itemPrice) {
-		final String sql = "update item_price set ITEM_NAME=? where ID=? ";
-		final Object[] params = { itemPrice.getItemName(), itemPrice.getId() };
+		final String sql = "update item_price set PRICE=? where ID=? ";
+		final Object[] params = { itemPrice.getPrice(), itemPrice.getId() };
 		jdbcTemplate.update(sql, params);
 
 	}
