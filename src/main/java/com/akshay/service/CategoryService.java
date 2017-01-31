@@ -42,7 +42,6 @@ public class CategoryService {
 
 		try {
 			categoryValidator.validateSave(category);
-
 			categoryDAO.delete(category);
 		} catch (CategoryNotFoundException e) {
 			throw new CategoryServiceException("All fields must be entered");

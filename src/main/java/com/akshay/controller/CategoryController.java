@@ -2,6 +2,8 @@ package com.akshay.controller;
 
 import java.time.LocalTime;
 
+
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,9 +16,11 @@ import com.akshay.service.CategoryService;
 @RequestMapping("/Category")
 public class CategoryController {
 @RequestMapping("/save")
+
 	public void save(@RequestParam("id") Integer id,@RequestParam("catdesc") String catdesc,@RequestParam("startTime") LocalTime startTime,@RequestParam("endTime") LocalTime endTime)
 	{
 		System.out.println("Save method called from controller");
+		Logger log = Logger.getLogger(CategoryController.class.getName());
 		Category category = new Category();
 		category.setId(id);
 		category.setCategoryDescription(catdesc);
@@ -29,7 +33,8 @@ public class CategoryController {
 			categoryService.saveService(category);
 		} catch (CategoryServiceException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+	       log.debug("Service Exception");
+
 		}
 	    
 	}
@@ -37,6 +42,7 @@ public class CategoryController {
 public void update(@RequestParam("id") Integer id,@RequestParam("catdesc") String catdesc)
 {
 	System.out.println("update method called from controller");
+	Logger log = Logger.getLogger(CategoryController.class.getName());
 	Category category = new Category();
 	category.setId(id);
 	category.setCategoryDescription(catdesc);
@@ -48,7 +54,7 @@ public void update(@RequestParam("id") Integer id,@RequestParam("catdesc") Strin
 		categoryService.updateService(category);
 	} catch (CategoryServiceException e) {
 		
-		e.printStackTrace();
+		log.debug("Update Controller method exception");
 	}
     
 }
