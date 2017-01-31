@@ -1,6 +1,6 @@
 package com.akshay.exception;
 
-public class ItemPriceInvalidUpdateException extends Exception{
+public class ItemPriceInvalidUpdateException extends Exception {
 
 	/**
 	 * 
@@ -9,12 +9,12 @@ public class ItemPriceInvalidUpdateException extends Exception{
 
 	public ItemPriceInvalidUpdateException(String message, Throwable cause) {
 		super(message, cause);
-		
+
 	}
 
 	public ItemPriceInvalidUpdateException(String message) {
 		super(message);
-		
+
 	}
 
 }

@@ -33,8 +33,7 @@ public class ItemController {
 		try {
 			itemService.provideService(item);
 		} catch (ItemServiceException e) {
-			// TODO Auto-generated catch block
-			log.debug("ItemController save exception",e);
+			log.debug("ItemController save exception", e);
 		}
 	}
 
@@ -48,8 +47,7 @@ public class ItemController {
 		try {
 			itemService.updateService(item);
 		} catch (ItemServiceException e) {
-			// TODO Auto-generated catch block
-			log.debug("ItemController update exception",e);
+			log.debug("ItemController update exception", e);
 		}
 	}
 }

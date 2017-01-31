@@ -9,12 +9,10 @@ public class OrderEntriesInvalidException extends Exception {
 
 	public OrderEntriesInvalidException(String message, Throwable cause) {
 		super(message, cause);
-		// TODO Auto-generated constructor stub
 	}
 
 	public OrderEntriesInvalidException(String message) {
 		super(message);
-		// TODO Auto-generated constructor stub
 	}
 
 }

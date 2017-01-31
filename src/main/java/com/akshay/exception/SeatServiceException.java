@@ -2,14 +2,17 @@ package com.akshay.exception;
 
 public class SeatServiceException extends Exception {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public SeatServiceException(String message, Throwable cause) {
 		super(message, cause);
-		// TODO Auto-generated constructor stub
 	}
 
 	public SeatServiceException(String message) {
 		super(message);
-		// TODO Auto-generated constructor stub
 	}
 
 }

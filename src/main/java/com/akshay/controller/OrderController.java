@@ -32,8 +32,7 @@ public class OrderController {
 		try {
 			orderService.provideService(order);
 		} catch (OrderServiceException e) {
-			// TODO Auto-generated catch block
-			log.debug("OrderService Exception",e);
+			log.debug("OrderService Exception", e);
 		}
 	}
 }

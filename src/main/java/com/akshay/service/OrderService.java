@@ -12,13 +12,10 @@ public class OrderService {
 	public void provideService(Order order) throws OrderServiceException {
 		OrderValidator orderValidator = new OrderValidator();
 		OrderDAO orderDAO = new OrderDAO();
-		try
-		{
+		try {
 			orderValidator.validateSave(order);
 			orderDAO.save(order);
-		}
-		catch(OrderEntriesInvalidException e)
-		{
+		} catch (OrderEntriesInvalidException e) {
 			throw new OrderServiceException("OrderService exception caught");
 		}
 	}

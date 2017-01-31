@@ -16,7 +16,6 @@ public class SeatController {
 	public void save(@RequestParam("id") Integer id, @RequestParam("seatNo") Integer seatNo,
 			@RequestParam("seatStatus") String seatStatus) {
 		Logger log = Logger.getLogger(CategoryController.class.getName());
-		System.out.println("Seat Controller Called");
 		Seat seat = new Seat();
 		seat.setId(id);
 		seat.setSeatNo(seatNo);
@@ -26,14 +25,13 @@ public class SeatController {
 		try {
 			seatService.provideService(seat);
 		} catch (SeatServiceException e) {
-			
+
 			log.debug("SeatService Exception", e);
 		}
 	}
 
 	public void update(@RequestParam("seatNo") Integer seatNo, @RequestParam("seatStatus") String seatStatus) {
 		Logger log = Logger.getLogger(CategoryController.class.getName());
-		System.out.println("Seat Controller Called");
 		Seat seat = new Seat();
 
 		seat.setSeatNo(seatNo);
@@ -43,7 +41,7 @@ public class SeatController {
 		try {
 			seatService.updateService(seat);
 		} catch (SeatServiceException e) {
-		
+
 			log.debug("SeatService Exception", e);
 		}
 	}

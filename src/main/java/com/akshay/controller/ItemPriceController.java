@@ -16,37 +16,31 @@ public class ItemPriceController {
 	public void save(@RequestParam("id") Integer id, @RequestParam("itemName") String itemName,
 			@RequestParam("Price") Integer price) {
 		Logger log = Logger.getLogger(CategoryController.class.getName());
-		System.out.println("ItemPrice Controller called");
 		ItemPrice itemPrice = new ItemPrice();
 		itemPrice.setId(id);
 		itemPrice.setItemName(itemName);
 		itemPrice.setPrice(price);
-		System.out.println(itemPrice);
 
 		ItemPriceService itemPriceService = new ItemPriceService();
 		try {
 			itemPriceService.provideService(itemPrice);
 		} catch (ItemPriceServiceException e) {
-			// TODO Auto-generated catch block
-		log.debug("ItemPriceService exception",e);
+			log.debug("ItemPriceService exception", e);
 		}
 	}
 
 	public void update(@RequestParam("id") Integer id, @RequestParam("Price") Integer price) {
 		Logger log = Logger.getLogger(CategoryController.class.getName());
-		System.out.println("ItemPrice Controller called");
 		ItemPrice itemPrice = new ItemPrice();
 		itemPrice.setId(id);
 
 		itemPrice.setPrice(price);
-		System.out.println(itemPrice);
 
 		ItemPriceService itemPriceService = new ItemPriceService();
 		try {
 			itemPriceService.updateService(itemPrice);
 		} catch (ItemPriceServiceException e) {
-			// TODO Auto-generated catch block
-			log.debug("ItemPriceService Exception",e);
+			log.debug("ItemPriceService Exception", e);
 		}
 	}
 

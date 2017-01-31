@@ -6,6 +6,7 @@ import org.apache.commons.mail.SimpleEmail;
 public class MailUtil {
 
 
+	@SuppressWarnings("deprecation")
 	public static void sendSimpleMail(String msg) throws EmailException{
 	Email email = new SimpleEmail();
 

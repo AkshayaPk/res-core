@@ -12,22 +12,20 @@ public class ItemService {
 	public void provideService(Item item) throws ItemServiceException {
 		ItemValidator itemValidator = new ItemValidator();
 		ItemDAO itemDAO = new ItemDAO();
-		
-		try{
+
+		try {
 			itemValidator.validateSave(item);
 			itemValidator.validateUpdate(item);
 			itemDAO.save(item);
-		}
-		catch(ItemNotFoundException e)
-		{
+		} catch (ItemNotFoundException e) {
 			throw new ItemServiceException("All fields must be entered");
 		}
 	}
-	public void updateService(Item item) throws ItemServiceException
-	{
+
+	public void updateService(Item item) throws ItemServiceException {
 		ItemValidator itemValidator = new ItemValidator();
 		ItemDAO itemDAO = new ItemDAO();
-		
+
 		try {
 			itemValidator.validateSave(item);
 			itemValidator.validateUpdate(item);
@@ -37,11 +35,11 @@ public class ItemService {
 			throw new ItemServiceException("All fields must be entered");
 		}
 	}
-	public void deleteService(Item item) throws ItemServiceException
-	{
+
+	public void deleteService(Item item) throws ItemServiceException {
 		ItemValidator itemValidator = new ItemValidator();
 		ItemDAO itemDAO = new ItemDAO();
-		
+
 		try {
 			itemValidator.validateSave(item);
 			itemValidator.validateUpdate(item);

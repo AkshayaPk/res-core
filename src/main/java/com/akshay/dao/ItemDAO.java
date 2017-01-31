@@ -35,7 +35,7 @@ public class ItemDAO {
 	 */
 	public void delete(final Item item) {
 		final String sql = "delete from item_master where id=?";
-		Object[] params={item.getId()};
+		Object[] params = { item.getId() };
 		jdbcTemplate.update(sql, params);
 
 	}

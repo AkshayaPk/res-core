@@ -26,7 +26,7 @@ public class OrderItemDAO {
 		final Object[] params = { orderItem.getId(), orderItem.getOrderNo().getOrderNo(), orderItem.getItemID().getId(),
 				orderItem.getOrderQty(), orderItem.getOrderItemPrice(), orderItem.getPaymentStatus() };
 		jdbcTemplate.update(sql, params);
-		
+
 	}
 
 	/**
@@ -36,8 +36,8 @@ public class OrderItemDAO {
 	 */
 	public void delete(final int id) {
 		final String sql = "delete from order_item_transaction where id=?";
-		 jdbcTemplate.update(sql, id);
-		
+		jdbcTemplate.update(sql, id);
+
 	}
 
 	/**
@@ -52,12 +52,14 @@ public class OrderItemDAO {
 			return item;
 		});
 	}
- /**
-  * CONVERT OBJECT TO RESULTSET
-  * @param rs
-  * @return
-  * @throws SQLException
-  */
+
+	/**
+	 * CONVERT OBJECT TO RESULTSET
+	 * 
+	 * @param rs
+	 * @return
+	 * @throws SQLException
+	 */
 	public OrderItem convert(final ResultSet rs) throws SQLException {
 		final OrderItem orderItem = new OrderItem();
 		orderItem.setId(rs.getInt("ID"));

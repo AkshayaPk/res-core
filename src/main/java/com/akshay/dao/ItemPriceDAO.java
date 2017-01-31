@@ -6,14 +6,12 @@ import java.util.List;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 
-
 import com.akshay.model.ItemPrice;
 import com.akshay.util.ConnectionUtil;
 
 public class ItemPriceDAO {
 
 	private final JdbcTemplate jdbcTemplate = ConnectionUtil.getJdbcTemplate();
-	
 
 	/**
 	 * TO INSERT A RECORD INTO THE ITEM_PRICE RELATION.
@@ -46,7 +44,7 @@ public class ItemPriceDAO {
 	 */
 	public void delete(final ItemPrice itemPrice) {
 		final String sql = "delete from item_price where ID=?";
-        Object[] params = {itemPrice.getId()};
+		Object[] params = { itemPrice.getId() };
 		jdbcTemplate.update(sql, params);
 
 	}

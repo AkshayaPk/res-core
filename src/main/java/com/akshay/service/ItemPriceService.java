@@ -8,43 +8,38 @@ import com.akshay.validator.ItemPriceValidator;
 
 public class ItemPriceService {
 
-	
-	public void provideService(ItemPrice itemPrice) throws ItemPriceServiceException
-	{
-	 ItemPriceValidator itemPriceValidator = new ItemPriceValidator();
-	 ItemPriceDAO itemPriceDAO=new ItemPriceDAO();
-		try
-		{
+	public void provideService(ItemPrice itemPrice) throws ItemPriceServiceException {
+		ItemPriceValidator itemPriceValidator = new ItemPriceValidator();
+		ItemPriceDAO itemPriceDAO = new ItemPriceDAO();
+		try {
 			itemPriceValidator.validateSave(itemPrice);
 			itemPriceDAO.save(itemPrice);
-		}
-		catch(ItemPriceInvalidUpdateException e)
-		{
+		} catch (ItemPriceInvalidUpdateException e) {
 			throw new ItemPriceServiceException("All fields must be entered");
 		}
 	}
-	public void updateService(ItemPrice itemPrice) throws ItemPriceServiceException
-	{
-		 ItemPriceValidator itemPriceValidator = new ItemPriceValidator();
-		 ItemPriceDAO itemPriceDAO=new ItemPriceDAO();
-		 
-		 try {
+
+	public void updateService(ItemPrice itemPrice) throws ItemPriceServiceException {
+		ItemPriceValidator itemPriceValidator = new ItemPriceValidator();
+		ItemPriceDAO itemPriceDAO = new ItemPriceDAO();
+
+		try {
 			itemPriceValidator.validateUpdate(itemPrice);
 			itemPriceDAO.update(itemPrice);
 		} catch (ItemPriceInvalidUpdateException e) {
-            throw new ItemPriceServiceException("Update price without negative values");			
+			throw new ItemPriceServiceException("Update price without negative values");
 		}
 	}
-	public void deleteService(ItemPrice itemPrice) throws ItemPriceServiceException
-	{
-		 ItemPriceValidator itemPriceValidator = new ItemPriceValidator();
-		 ItemPriceDAO itemPriceDAO=new ItemPriceDAO();
-		 
-		 try {
+
+	public void deleteService(ItemPrice itemPrice) throws ItemPriceServiceException {
+		ItemPriceValidator itemPriceValidator = new ItemPriceValidator();
+		ItemPriceDAO itemPriceDAO = new ItemPriceDAO();
+
+		try {
 			itemPriceValidator.validateUpdate(itemPrice);
 			itemPriceDAO.delete(itemPrice);
 		} catch (ItemPriceInvalidUpdateException e) {
-            throw new ItemPriceServiceException("Update price without negative values");			
+			throw new ItemPriceServiceException("Update price without negative values");
 		}
 	}
 }

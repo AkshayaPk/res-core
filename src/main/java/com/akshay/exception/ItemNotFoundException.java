@@ -1,6 +1,6 @@
 package com.akshay.exception;
 
-public  class ItemNotFoundException extends Exception{
+public class ItemNotFoundException extends Exception {
 
 	/**
 	 * 
@@ -10,18 +10,15 @@ public  class ItemNotFoundException extends Exception{
 	/**
 	 * 
 	 */
-	
 
 	public ItemNotFoundException(String message, Throwable cause) {
 		super(message, cause);
-		
+
 	}
 
 	public ItemNotFoundException(String message) {
 		super(message);
-		
+
 	}
 
-	
-	
 }

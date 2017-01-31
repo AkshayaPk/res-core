@@ -40,7 +40,6 @@ public class OrderItemController {
 		try {
 			orderItemService.provideService(orderItem);
 		} catch (OrderItemServiceException e) {
-			// TODO Auto-generated catch block
 			log.debug("ItemServiceException", e);
 		}
 
