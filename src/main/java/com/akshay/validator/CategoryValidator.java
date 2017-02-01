@@ -9,8 +9,7 @@ public class CategoryValidator {
 
 		if ("".equals(category.getCategoryDescription())
 				|| "".equals(category.getStartTime()) || "".equals(category.getEndTime()) || category.getId() < 0
-				|| category.getCategoryDescription() == null || category.getStartTime() == null
-				|| category.getEndTime() == null) {
+				) {
 
 			throw new CategoryNotFoundException("This field cannot be null");
 

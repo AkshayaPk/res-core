@@ -59,9 +59,9 @@ public class ItemDAO {
 	 */
 	public List<Item> list() {
 		final String sql = "Select ID,ITEM_NAME,ITEM_CATEGORY_CODE,ITEM_OPENING_STOCK,ITEM_STOCK_ON_HAND,ITEM_CLOSING_STOCK from item_master";
-		return jdbcTemplate.query(sql, (rs, rowNum) -> {
-			return convert(rs);
-		});
+		return jdbcTemplate.query(sql, (rs, rowNum) -> 
+			 convert(rs)
+		);
 	}
 
 	public Item convert(final ResultSet rs) throws SQLException {
