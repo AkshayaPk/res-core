@@ -17,4 +17,18 @@ public class CategoryValidator {
 		}
 
 	}
+	public void validateUpdate(Category category) throws CategoryNotFoundException
+	{
+		if(category.getCategoryDescription()==null || "".equals(category.getCategoryDescription())|| category.getId()<0)
+		{
+			throw new CategoryNotFoundException("Please enter these required fields");
+		}
+	}
+	public void validateDelete(Category category) throws CategoryNotFoundException
+	{
+		if(category.getId()<0)
+		{
+			throw new CategoryNotFoundException("Please enter ID");
+		}
+	}
 }

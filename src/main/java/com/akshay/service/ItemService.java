@@ -9,6 +9,8 @@ import com.akshay.validator.ItemValidator;
 
 public class ItemService {
 
+	private static final String ALL_FIELDS_MUST_BE_ENTERED = "All fields must be entered";
+
 	public void provideService(Item item) throws ItemServiceException {
 		ItemValidator itemValidator = new ItemValidator();
 		ItemDAO itemDAO = new ItemDAO();
@@ -18,7 +20,7 @@ public class ItemService {
 			itemValidator.validateUpdate(item);
 			itemDAO.save(item);
 		} catch (ItemNotFoundException e) {
-			throw new ItemServiceException("All fields must be entered");
+			throw new ItemServiceException(ALL_FIELDS_MUST_BE_ENTERED,e);
 		}
 	}
 
@@ -27,12 +29,11 @@ public class ItemService {
 		ItemDAO itemDAO = new ItemDAO();
 
 		try {
-			itemValidator.validateSave(item);
+			
 			itemValidator.validateUpdate(item);
 			itemDAO.update(item);
 		} catch (ItemNotFoundException e) {
-			// TODO Auto-generated catch block
-			throw new ItemServiceException("All fields must be entered");
+			throw new ItemServiceException(ALL_FIELDS_MUST_BE_ENTERED,e);
 		}
 	}
 
@@ -41,12 +42,11 @@ public class ItemService {
 		ItemDAO itemDAO = new ItemDAO();
 
 		try {
-			itemValidator.validateSave(item);
-			itemValidator.validateUpdate(item);
+			itemValidator.validateDelete(item);
 			itemDAO.delete(item);
 		} catch (ItemNotFoundException e) {
-			// TODO Auto-generated catch block
-			throw new ItemServiceException("All fields must be entered");
+		
+			throw new ItemServiceException(ALL_FIELDS_MUST_BE_ENTERED,e);
 		}
 	}
 }

@@ -57,8 +57,7 @@ public class CategoryDAO {
 	public List<Category> list() {
 		final String sql = "select ID,CATEGORY_DESCRIPTION,START_TIME,END_TIME from category_master";
 		return jdbcTemplate.query(sql, (rs, rowNum) -> {
-			final Category category = convert(rs);
-			return category;
+			return convert(rs);
 		});
 
 	}

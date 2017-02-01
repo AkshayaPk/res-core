@@ -8,7 +8,9 @@ import com.akshay.validator.CategoryValidator;
 
 public class CategoryService {
 
-	public void saveService(Category category) throws CategoryServiceException {
+	private static final String ALL_FIELDS_MUST_BE_ENTERED = "All fields must be entered";
+
+	public void saveService(Category category) throws CategoryServiceException  {
 		CategoryValidator categoryValidator = new CategoryValidator();
 		CategoryDAO categoryDAO = new CategoryDAO();
 		try {
@@ -17,8 +19,8 @@ public class CategoryService {
 
 		} catch (CategoryNotFoundException e) {
 
-			throw new CategoryServiceException("All fields must be entered");
-		}
+throw new CategoryServiceException("Enter all values",e);	
+}
 
 	}
 
@@ -27,10 +29,10 @@ public class CategoryService {
 		CategoryDAO categoryDAO = new CategoryDAO();
 
 		try {
-			categoryValidator.validateSave(category);
+			categoryValidator.validateUpdate(category);
 			categoryDAO.update(category);
 		} catch (CategoryNotFoundException e) {
-			throw new CategoryServiceException("All fields must be entered");
+			throw new CategoryServiceException(ALL_FIELDS_MUST_BE_ENTERED,e);
 
 		}
 
@@ -41,10 +43,10 @@ public class CategoryService {
 		CategoryDAO categoryDAO = new CategoryDAO();
 
 		try {
-			categoryValidator.validateSave(category);
+			categoryValidator.validateDelete(category);
 			categoryDAO.delete(category);
 		} catch (CategoryNotFoundException e) {
-			throw new CategoryServiceException("All fields must be entered");
+			throw new CategoryServiceException(ALL_FIELDS_MUST_BE_ENTERED,e);
 
 		}
 

@@ -23,5 +23,12 @@ public class ItemValidator {
 		}
 
 	}
+	public void validateDelete(Item item) throws ItemNotFoundException
+	{
+		if(item.getId()<0)
+		{
+			throw new ItemNotFoundException("Enter ID");
+		}
+	}
 
 }

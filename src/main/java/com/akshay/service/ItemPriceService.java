@@ -15,7 +15,7 @@ public class ItemPriceService {
 			itemPriceValidator.validateSave(itemPrice);
 			itemPriceDAO.save(itemPrice);
 		} catch (ItemPriceInvalidUpdateException e) {
-			throw new ItemPriceServiceException("All fields must be entered");
+			throw new ItemPriceServiceException("All fields must be entered",e);
 		}
 	}
 
@@ -27,7 +27,7 @@ public class ItemPriceService {
 			itemPriceValidator.validateUpdate(itemPrice);
 			itemPriceDAO.update(itemPrice);
 		} catch (ItemPriceInvalidUpdateException e) {
-			throw new ItemPriceServiceException("Update price without negative values");
+			throw new ItemPriceServiceException("Update price without negative values",e);
 		}
 	}
 
@@ -36,10 +36,10 @@ public class ItemPriceService {
 		ItemPriceDAO itemPriceDAO = new ItemPriceDAO();
 
 		try {
-			itemPriceValidator.validateUpdate(itemPrice);
+			itemPriceValidator.validateDelete(itemPrice);
 			itemPriceDAO.delete(itemPrice);
 		} catch (ItemPriceInvalidUpdateException e) {
-			throw new ItemPriceServiceException("Update price without negative values");
+			throw new ItemPriceServiceException("Enter positive values alone",e);
 		}
 	}
 }

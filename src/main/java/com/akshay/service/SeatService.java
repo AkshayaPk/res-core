@@ -16,7 +16,7 @@ public class SeatService {
 			seatValidator.validateSave(seat);
 			seatDAO.save(seat);
 		} catch (SeatInvalidEntriesException e) {
-			throw new SeatServiceException("SeatService exception caught");
+			throw new SeatServiceException("SeatService exception caught",e);
 		}
 	}
 
@@ -28,7 +28,7 @@ public class SeatService {
 			seatValidator.validateSave(seat);
 			seatDAO.update(seat);
 		} catch (SeatInvalidEntriesException e) {
-			throw new SeatServiceException("Seat update exception");
+			throw new SeatServiceException("Seat update exception",e);
 		}
 
 	}
@@ -41,7 +41,7 @@ public class SeatService {
 			seatValidator.validateSave(seat);
 			seatDAO.delete(seat);
 		} catch (SeatInvalidEntriesException e) {
-			throw new SeatServiceException("Seat update exception");
+			throw new SeatServiceException("Seat update exception",e);
 		}
 
 	}

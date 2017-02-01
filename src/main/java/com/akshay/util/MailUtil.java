@@ -4,10 +4,13 @@ import org.apache.commons.mail.Email;
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.SimpleEmail;
 public class MailUtil {
+	
+	private  MailUtil() {
+	}
 
 
-	@SuppressWarnings("deprecation")
-	public static void sendSimpleMail(String msg) throws EmailException{
+	
+	public static void sendSimpleMail() throws EmailException{
 	Email email = new SimpleEmail();
 
 	email.setSmtpPort(465);
@@ -20,9 +23,9 @@ public class MailUtil {
 	email.setSubject("TestMail");
 	email.setMsg("This is a test mail ... :-)");
 	email.addTo("playboykd23@gmail.com");
-	email.setTLS(true);
+	email.setStartTLSEnabled(true);
 	email.send();
-	System.out.println("MAIL SENT!!");
+	
 		
 	}
 }

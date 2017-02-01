@@ -16,7 +16,7 @@ public class OrderService {
 			orderValidator.validateSave(order);
 			orderDAO.save(order);
 		} catch (OrderEntriesInvalidException e) {
-			throw new OrderServiceException("OrderService exception caught");
+			throw new OrderServiceException("OrderService exception caught",e);
 		}
 	}
 }
