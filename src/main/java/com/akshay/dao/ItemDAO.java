@@ -60,8 +60,7 @@ public class ItemDAO {
 	public List<Item> list() {
 		final String sql = "Select ID,ITEM_NAME,ITEM_CATEGORY_CODE,ITEM_OPENING_STOCK,ITEM_STOCK_ON_HAND,ITEM_CLOSING_STOCK from item_master";
 		return jdbcTemplate.query(sql, (rs, rowNum) -> {
-			final Item item = convert(rs);
-			return item;
+			return convert(rs);
 		});
 	}
 
@@ -81,15 +80,13 @@ public class ItemDAO {
 
 	public Boolean validateItem(String name) {
 		String sql = "select FN_CHECK_ITEM_IN_LIST(?)";
-		Boolean isAvailable = jdbcTemplate.queryForObject(sql, new Object[] { name }, Boolean.class);
-		return isAvailable;
+		return jdbcTemplate.queryForObject(sql, new Object[] { name }, Boolean.class);
 	}
 
 	public List<Item> listItems() {
 		String sql = "select distinct ITEM_NAME from ITEM_MASTER";
 		return jdbcTemplate.query(sql, (rs, rowNum) -> {
-			final Item item = convertForMenu(rs);
-			return item;
+			return convertForMenu(rs);
 		});
 	}
 

@@ -57,8 +57,7 @@ public class ItemPriceDAO {
 	public List<ItemPrice> list() {
 		final String sql = "select ID,ITEM_NAME,PRICE from item_price";
 		return jdbcTemplate.query(sql, (rs, rowNum) -> {
-			final ItemPrice itemPrice = convert(rs);
-			return itemPrice;
+			return convert(rs);
 
 		});
 	}
@@ -81,8 +80,7 @@ public class ItemPriceDAO {
 
 	public Integer getPriceOfItem(String foodname) {
 		String sql = "select FN_GET_PRICE_OF_FOOD(?)";
-		Integer itemPrice = jdbcTemplate.queryForObject(sql, new Object[] { foodname }, Integer.class);
-		return itemPrice;
+		return jdbcTemplate.queryForObject(sql, new Object[] { foodname }, Integer.class);
 	}
 
 }

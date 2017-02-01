@@ -54,8 +54,7 @@ public class OrderDAO {
 	public List<Order> list() {
 		final String sql = "select ORDER_NO,ORDER_DATE,ORDER_TIME,ORDER_SEAT_NO from order_transaction";
 		return jdbcTemplate.query(sql, (rs, rowNum) -> {
-			final Order order = convert(rs);
-			return order;
+			return convert(rs);
 
 		});
 	}
@@ -72,7 +71,7 @@ public class OrderDAO {
 		return order;
 	}
 
-	public String PlaceOrder(String foodname, String quantity, int orderid, int seatno, String errmsg) {
+	public String placeOrder(String foodname, String quantity, int orderid, int seatno, String errmsg) {
 		SimpleJdbcCall call = new SimpleJdbcCall(jdbcTemplate).withProcedureName("PR_ORDERFOOD").declareParameters(
 				new SqlParameter("_food", Types.VARCHAR), new SqlParameter("_quan", Types.VARCHAR),
 				new SqlParameter("i_orderid", Types.INTEGER), new SqlParameter("i_seatno", Types.INTEGER),
@@ -81,39 +80,33 @@ public class OrderDAO {
 		SqlParameterSource in = new MapSqlParameterSource().addValue("_food", foodname).addValue("_quan", quantity)
 				.addValue("i_orderid", orderid).addValue("i_seatno", seatno).addValue("errmsg", errmsg);
 		Map<String, Object> execute = call.execute(in);
-		String status = (String) execute.get("errmsg");
-		return status;
+		return (String) execute.get("errmsg");
 
 	}
 
-	public String CancelOrder(int orderid, String foodname, String errmsg) {
+	public String cancelOrder(int orderid, String foodname, String errmsg) {
 		SimpleJdbcCall call = new SimpleJdbcCall(jdbcTemplate).withProcedureName("PR_CANCEL_ORDER").declareParameters(
 				new SqlParameter("i_orderid", Types.INTEGER), new SqlParameter("i_foodname", Types.VARCHAR),
 				new SqlOutParameter("errmsg", Types.VARCHAR));
 		call.setAccessCallParameterMetaData(false);
 		SqlParameterSource in = new MapSqlParameterSource().addValue("i_orderid", orderid)
 				.addValue("i_foodname", foodname).addValue("errmsg", errmsg);
-		Map<String, Object> execute = call.execute(in);
-		String status = (String) execute.get("errmsg");
-		return status;
+		return (String) call.execute(in).get("errmsg");
 
 	}
 
 	public Boolean validateOrderNo(int orderNo) {
 		String sql = "select FN_CHECK_ORDERNO(?)";
-		Boolean isAvailable = jdbcTemplate.queryForObject(sql, new Object[] { orderNo }, Boolean.class);
-		return isAvailable;
+		return jdbcTemplate.queryForObject(sql, new Object[] { orderNo }, Boolean.class);
 	}
 
-	public Boolean CheckItemCategoryServed(String foodname) {
+	public Boolean checkItemCategoryServed(String foodname) {
 		String sql = "select FN_IS_ITEM_CATEGORY_SERVED(?)";
-		Boolean isAvailable = jdbcTemplate.queryForObject(sql, new Object[] { foodname }, Boolean.class);
-		return isAvailable;
+		return jdbcTemplate.queryForObject(sql, new Object[] { foodname }, Boolean.class);
 	}
 
-	public Boolean CheckNumberOfItemsOrdered(String foodname) {
+	public Boolean checkNumberOfItemsOrdered(String foodname) {
 		String sql = "select FN_CHECK_NUMBER_ITEMS(?)";
-		Boolean isAvailable = jdbcTemplate.queryForObject(sql, new Object[] { foodname }, Boolean.class);
-		return isAvailable;
+		return jdbcTemplate.queryForObject(sql, new Object[] { foodname }, Boolean.class);
 	}
 }

@@ -32,7 +32,7 @@ public class TestOrderDAO {
 //          System.out.println(status);
 //          String cancelStatus=orderDAO.CancelOrder(6, "Coffee", "errmsg");
 //          System.out.println(cancelStatus);
-		 Boolean isPresent=orderDAO.CheckNumberOfItemsOrdered("Idly,Dosa,Poori,Pongal,Vada");
+		 Boolean isPresent=orderDAO.checkNumberOfItemsOrdered("Idly,Dosa,Poori,Pongal,Vada");
 		 System.out.println(isPresent);
 	}
 }
