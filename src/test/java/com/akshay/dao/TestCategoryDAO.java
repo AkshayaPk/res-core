@@ -23,7 +23,7 @@ public class TestCategoryDAO {
 
 		final List<Category> list = categoryDAO.list();
 		for (final Category c : list) {
-			
+			System.out.println(c);
 		}
 	}
 

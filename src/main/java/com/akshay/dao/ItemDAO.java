@@ -85,9 +85,9 @@ public class ItemDAO {
 
 	public List<Item> listItems() {
 		String sql = "select distinct ITEM_NAME from ITEM_MASTER";
-		return jdbcTemplate.query(sql, (rs, rowNum) -> {
-			return convertForMenu(rs);
-		});
+		return jdbcTemplate.query(sql, (rs, rowNum) -> 
+			 convertForMenu(rs)
+		);
 	}
 
 	public Item convertForMenu(final ResultSet rs) throws SQLException {

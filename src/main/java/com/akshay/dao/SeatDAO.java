@@ -56,9 +56,9 @@ public class SeatDAO {
 	 */
 	public List<Seat> list() {
 		final String sql = "Select ID,SEAT_NO,SEAT_STATUS from seat_master";
-		return jdbcTemplate.query(sql, (rs, rowNum) -> {
-			return convert(rs);
-		});
+		return jdbcTemplate.query(sql, (rs, rowNum) -> 
+			 convert(rs)
+		);
 
 	}
 

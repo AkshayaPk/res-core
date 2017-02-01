@@ -47,9 +47,9 @@ public class OrderItemDAO {
 	 */
 	public List<OrderItem> list() {
 		final String sql = "Select ID,ORDER_NO,ITEM_ID,ORDER_QTY,ORDER_ITEM_PRICE,PAYMENT_STATUS from order_item_transaction";
-		return jdbcTemplate.query(sql, (rs, rowNum) -> {
-			return convert(rs);
-		});
+		return jdbcTemplate.query(sql, (rs, rowNum) -> 
+			 convert(rs)
+		);
 	}
 
 	/**

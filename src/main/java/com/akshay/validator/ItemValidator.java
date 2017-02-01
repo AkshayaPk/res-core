@@ -6,7 +6,7 @@ import com.akshay.model.Item;
 public class ItemValidator {
 	public void validateSave(Item item) throws ItemNotFoundException {
 
-		if (("".equals(item.getItemName()) || "".equals(item.getCategoryCode()))) {
+		if ("".equals(item.getItemName()) || "".equals(item.getCategoryCode())) {
 			throw new ItemNotFoundException("Please fill all fields.");
 
 		}

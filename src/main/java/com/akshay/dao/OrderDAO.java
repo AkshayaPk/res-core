@@ -19,6 +19,8 @@ import com.akshay.util.ConnectionUtil;
 
 public class OrderDAO {
 
+	private static final String ERRMSG2 = "errmsg";
+	private static final String I_ORDERID = "i_orderid";
 	private final JdbcTemplate jdbcTemplate = ConnectionUtil.getJdbcTemplate();
 
 	/**
@@ -53,10 +55,10 @@ public class OrderDAO {
 	 */
 	public List<Order> list() {
 		final String sql = "select ORDER_NO,ORDER_DATE,ORDER_TIME,ORDER_SEAT_NO from order_transaction";
-		return jdbcTemplate.query(sql, (rs, rowNum) -> {
-			return convert(rs);
+		return jdbcTemplate.query(sql, (rs, rowNum) -> 
+			 convert(rs)
 
-		});
+		);
 	}
 
 	static Order convert(final ResultSet rs) throws SQLException {
@@ -74,24 +76,24 @@ public class OrderDAO {
 	public String placeOrder(String foodname, String quantity, int orderid, int seatno, String errmsg) {
 		SimpleJdbcCall call = new SimpleJdbcCall(jdbcTemplate).withProcedureName("PR_ORDERFOOD").declareParameters(
 				new SqlParameter("_food", Types.VARCHAR), new SqlParameter("_quan", Types.VARCHAR),
-				new SqlParameter("i_orderid", Types.INTEGER), new SqlParameter("i_seatno", Types.INTEGER),
-				new SqlOutParameter("errmsg", Types.VARCHAR));
+				new SqlParameter(I_ORDERID, Types.INTEGER), new SqlParameter("i_seatno", Types.INTEGER),
+				new SqlOutParameter(ERRMSG2, Types.VARCHAR));
 		call.setAccessCallParameterMetaData(false);
 		SqlParameterSource in = new MapSqlParameterSource().addValue("_food", foodname).addValue("_quan", quantity)
-				.addValue("i_orderid", orderid).addValue("i_seatno", seatno).addValue("errmsg", errmsg);
+				.addValue(I_ORDERID, orderid).addValue("i_seatno", seatno).addValue(ERRMSG2, errmsg);
 		Map<String, Object> execute = call.execute(in);
-		return (String) execute.get("errmsg");
+		return (String) execute.get(ERRMSG2);
 
 	}
 
 	public String cancelOrder(int orderid, String foodname, String errmsg) {
 		SimpleJdbcCall call = new SimpleJdbcCall(jdbcTemplate).withProcedureName("PR_CANCEL_ORDER").declareParameters(
-				new SqlParameter("i_orderid", Types.INTEGER), new SqlParameter("i_foodname", Types.VARCHAR),
-				new SqlOutParameter("errmsg", Types.VARCHAR));
+				new SqlParameter(I_ORDERID, Types.INTEGER), new SqlParameter("i_foodname", Types.VARCHAR),
+				new SqlOutParameter(ERRMSG2, Types.VARCHAR));
 		call.setAccessCallParameterMetaData(false);
-		SqlParameterSource in = new MapSqlParameterSource().addValue("i_orderid", orderid)
-				.addValue("i_foodname", foodname).addValue("errmsg", errmsg);
-		return (String) call.execute(in).get("errmsg");
+		SqlParameterSource in = new MapSqlParameterSource().addValue(I_ORDERID, orderid)
+				.addValue("i_foodname", foodname).addValue(ERRMSG2, errmsg);
+		return (String) call.execute(in).get(ERRMSG2);
 
 	}
 

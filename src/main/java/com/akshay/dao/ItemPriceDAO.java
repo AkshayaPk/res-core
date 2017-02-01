@@ -56,10 +56,10 @@ public class ItemPriceDAO {
 	 */
 	public List<ItemPrice> list() {
 		final String sql = "select ID,ITEM_NAME,PRICE from item_price";
-		return jdbcTemplate.query(sql, (rs, rowNum) -> {
-			return convert(rs);
+		return jdbcTemplate.query(sql, (rs, rowNum) -> 
+			 convert(rs)
 
-		});
+		);
 	}
 
 	/**
