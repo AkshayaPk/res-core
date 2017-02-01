@@ -25,7 +25,7 @@ public class ItemPriceValidator {
 	}
 	public void validateDelete(ItemPrice itemPrice) throws ItemPriceInvalidUpdateException
 	{
-		if(itemPrice.getId()<0 || "".equals(itemPrice.getId()))
+		if(itemPrice.getId()<0)
 		{
 			throw new ItemPriceInvalidUpdateException("Enter ID");
 		}

@@ -8,7 +8,7 @@ public class CategoryValidator {
 	public void validateSave(Category category) throws CategoryNotFoundException {
 
 		if ("".equals(category.getCategoryDescription())
-				|| "".equals(category.getStartTime()) || "".equals(category.getEndTime()) || category.getId() < 0
+				|| "".equals(category.getStartTime().toString()) || "".equals(category.getEndTime().toString()) || category.getId() < 0
 				) {
 
 			throw new CategoryNotFoundException("This field cannot be null");
